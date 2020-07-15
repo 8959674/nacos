@@ -51,6 +51,8 @@ public final class ThreadUtils {
         try {
             Thread.sleep(millis);
         } catch (InterruptedException e) {
+            //线程抛出中断异常后，会将中断标志位清除，此次需要重置中断标志位
+            //Thread.interrupt()方法不会中断一个正在运行的线程。这一方法实际上完成的是，设置线程的中断标示位
             Thread.currentThread().interrupt();
         }
     }
